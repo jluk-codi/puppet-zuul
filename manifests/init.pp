@@ -89,13 +89,17 @@ class zuul (
   $gearman_server_ssl_key = undef,
   $gearman_ssl_ca = undef,
   $gearman_listen_port = '4730',
+  $gearman_server_tcp_keepalive = false,
+  $gearman_server_tcp_keepidle = '10',
+  $gearman_server_tcp_keepintvl = '60',
+  $gearman_server_tcp_keepcnt = '10',
+  $gearman_server_ssl_key = undef,
   $zuul_web_url = 'http://127.0.0.1:9000',
   $zuul_scheduler_url = 'http://127.0.0.1:8001',
   $site_variables_yaml_file = undef,
 ) {
   include ::httpd
   include ::pip
-
   include ::zuul::systemd_reload
 
   if ($python_version == 3) {
